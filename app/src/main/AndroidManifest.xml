@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.curiouslearning.videoplayertest" >
+
+    <uses-permission android:name="android.permission.BATTERY_STATS" />
+    <!-- All probes -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- Location probe, Cell probe -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- Location probe -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+
+    <!-- Wifi and Hardware Info probes -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <!-- Wifi probe -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
+    <!-- Bluetooth probe -->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+    <!-- Bluetooth and Hardware Info probes -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+
+    <!-- Running applications probe -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
+    <!-- Browser probes -->
+    <uses-permission
+        android:name="com.android.browser.permission.READ_HISTORY_BOOKMARKS" />
+
+    <!-- Call Log and Contact probes -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <!-- Backing up database to SD card -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- Backing up to the web -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- SMS Probe -->
+    <uses-permission android:name="android.permission.READ_SMS" />
+
+    <!-- Running applications probe -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
+    <!-- Running Audio features probe -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <!-- Backing up database to SD card -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- Backing up to the web -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- DatabaseService, Archive service (unique ids) -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/curious_learning_logo"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
