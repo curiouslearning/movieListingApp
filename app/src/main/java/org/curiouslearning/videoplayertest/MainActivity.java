@@ -6,6 +6,7 @@ import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +20,7 @@ import java.io.File;
 
 public class MainActivity extends ActionBarActivity {
 
+    private final static String TAG = "org.curiouslearning.videoplayer";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +37,7 @@ public class MainActivity extends ActionBarActivity {
                     .replace("_", " "));
             myButton.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
+                    sendLog("CL_VideoPlayer", file.getName());
                     playVideo(moviesFolder + "/" + file.getName());
                 }
             });
@@ -43,6 +46,24 @@ public class MainActivity extends ActionBarActivity {
             RadioGroup.LayoutParams lp = new RadioGroup.LayoutParams(RadioGroup.LayoutParams.MATCH_PARENT, RadioGroup.LayoutParams.WRAP_CONTENT);
             ll.addView(myButton, lp);
         }
+    }
+
+    public static final String DATABASE_NAME_KEY = "DATABASE_NAME";
+    public static final String NAME_KEY = "NAME";
+    public static final String VALUE_KEY = "VALUE";
+    public static final String TIMESTAMP_KEY = "TIMESTAMP";
+    public static final String ACTION_RECORD = "edu.mit.media.funf.RECORD";
+    public void sendLog(String name, String value) {
+        Intent i = new Intent();
+        i.setAction(ACTION_RECORD);
+        Bundle b = new Bundle();
+        b.putString(DATABASE_NAME_KEY, "mainPipeline");
+        b.putLong(TIMESTAMP_KEY, System.currentTimeMillis()/1000);
+        b.putString(NAME_KEY, name);
+        b.putString(VALUE_KEY, value);
+        i.putExtras(b);
+        sendBroadcast(i);
+        Log.i(TAG, "Funf Record: " + name + " = " + value);
     }
 
     private void playVideo(String movieToPlay)
