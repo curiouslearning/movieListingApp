@@ -29,7 +29,8 @@ public class MainActivity extends ActionBarActivity {
         {
             Button myButton = new Button(this);
             myButton.setId(numberOfFiles++);
-            myButton.setText(file.getName().replace(".wmv", "").replace(".mp4", ""));
+            myButton.setText(file.getName().replace(".wmv", "").replace(".mp4", "")
+                    .replace("_", " "));
             myButton.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     playVideo(moviesFolder + "/" + file.getName());
