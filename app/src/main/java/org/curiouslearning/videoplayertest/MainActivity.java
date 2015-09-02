@@ -1,5 +1,6 @@
 package org.curiouslearning.videoplayertest;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
@@ -20,7 +21,7 @@ import java.io.File;
 
 public class MainActivity extends ActionBarActivity {
 
-    private final static String TAG = "org.curiouslearning.videoplayer";
+    private final static String TAG = "videoplayer";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,8 +38,15 @@ public class MainActivity extends ActionBarActivity {
                     .replace("_", " "));
             myButton.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    sendLog("CL_VideoPlayer", file.getName());
-                    playVideo(moviesFolder + "/" + file.getName());
+                    try
+                    {
+                        sendLog("CL_VideoPlayer", file.getName());
+                        playVideo(moviesFolder + "/" + file.getName());
+                    }
+                    catch(ActivityNotFoundException e)
+                    {
+                        Log.e(TAG, "Activity not found when trying to play a movie: " + e);
+                    }
                 }
             });
 
